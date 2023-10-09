@@ -42,4 +42,5 @@ jobs:
 
       - name: Run generated artifact
         run: |
+          docker image ls
           docker run dashpay/mtime-test:${{ github.event.inputs.tag }}
