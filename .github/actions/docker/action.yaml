@@ -76,7 +76,7 @@ runs:
       uses: dcginfra/buildkit-cache-dance/inject@main
       if: ${{ inputs.cache_mounts != '' }}
       with:
-        bucket: multi-runner-linux-x64-mtime-cache-5yvgd4rg
+        bucket: multi-runner-linux-x64-mtime-cache-qitt4dpa
         mounts: ${{ inputs.cache_mounts }}
 
     - name: Set suffix
@@ -112,6 +112,7 @@ runs:
       uses: ./.github/actions/s3-layer-cache-settings
       id: layer_cache_settings
       with:
+        bucket: multi-runner-linux-x64-mtime-cache-qitt4dpa
         name: ${{ inputs.image }}
         head_ref: ${{ inputs.image_tag }}
 
@@ -137,5 +138,5 @@ runs:
       uses: dcginfra/buildkit-cache-dance/extract@main
       if: ${{ inputs.cache_mounts != '' }}
       with:
-        bucket: multi-runner-linux-x64-mtime-cache-5yvgd4rg
+        bucket: multi-runner-linux-x64-mtime-cache-qitt4dpa
         mounts: ${{ inputs.cache_mounts }}
