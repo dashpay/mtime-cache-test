@@ -29,6 +29,7 @@ jobs:
           image: dashpay/mtime-test
           push: false
           image_tag: 0.1.0
+          platforms: amd64
           cache_mounts: |
             cargo_registry_index
             cargo_registry_cache
