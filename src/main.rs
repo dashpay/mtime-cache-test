@@ -1,3 +1,3 @@
 fn main() {
-    println!("456");
+    println!("older output 123");
 }
