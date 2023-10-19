@@ -19,8 +19,8 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     tree -L 2 -apuD "${CARGO_HOME}/registry/index" && \
     echo "${CARGO_HOME}/registry/cache" && \
     tree -L 2 -apuD "${CARGO_HOME}/registry/cache" && \
-    echo "${CARGO_HOME}/registry/git/db" && \
-    tree -L 2 -apuD "${CARGO_HOME}/registry/git/db" && \
+    echo "${CARGO_HOME}/git/db" && \
+    tree -L 2 -apuD "${CARGO_HOME}/git/db" && \
     echo "/mtime/target" && \
     tree -L 2 -apuD "/mtime/target" && \
     cargo build --release && \
