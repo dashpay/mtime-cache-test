@@ -21,11 +21,11 @@ jobs:
       - name: Restore timestamps
         uses: chetan/git-restore-mtime-action@v2
 
-      - name: Configure mtime layer cache
-        uses: ./.github/actions/s3-layer-cache-settings
-        id: mtime_layer_cache_settings
-        with:
-          name: dashpay/mtime
+      # - name: Configure mtime layer cache
+      #   uses: ./.github/actions/s3-layer-cache-settings
+      #   id: mtime_layer_cache_settings
+      #   with:
+      #     name: dashpay/mtime
 
       - name: Build Docker image
         uses: ./.github/actions/docker
