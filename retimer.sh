@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Output file
 OUTPUT_FILE="file_info.txt"
