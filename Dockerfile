@@ -16,13 +16,13 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     --mount=type=cache,sharing=shared,id=cargo_git,target=${CARGO_HOME}/git/db \
     --mount=type=cache,sharing=shared,id=target_${TARGETARCH},target=/mtime/target \
     echo "${CARGO_HOME}/registry/index" && \
-    tree -L 2 -apuD "${CARGO_HOME}/registry/index" && \
+    tree -apuD "${CARGO_HOME}/registry/index" && \
     echo "${CARGO_HOME}/registry/cache" && \
-    tree -L 2 -apuD "${CARGO_HOME}/registry/cache" && \
+    tree -apuD "${CARGO_HOME}/registry/cache" && \
     echo "${CARGO_HOME}/git/db" && \
-    tree -L 2 -apuD "${CARGO_HOME}/git/db" && \
+    tree -apuD "${CARGO_HOME}/git/db" && \
     echo "/mtime/target" && \
-    tree -L 2 -apuD "/mtime/target" && \
+    tree -apuD "/mtime/target" && \
     cargo build --release && \
     cp /mtime/target/release/mtime-cache-test /artifacts/mtime-cache-test
 
