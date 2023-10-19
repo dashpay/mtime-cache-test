@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1.5
 
 FROM rust:alpine3.18
-RUN apk add --no-cache tree
+RUN apk add --no-cache tree b3sum
 ARG TARGETARCH
 
 RUN mkdir /mtime
@@ -17,6 +17,9 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     --mount=type=cache,sharing=shared,id=target_${TARGETARCH},target=/mtime/target \
     echo "current time" && \
     date && \
+    echo "retimer output before build" && \
+    ./retimer.sh && \
+    cat file_info.txt && \
     echo "${CARGO_HOME}/registry/index" && \
     tree -apuD "${CARGO_HOME}/registry/index" && \
     echo "${CARGO_HOME}/registry/cache" && \
@@ -26,6 +29,9 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     echo "/mtime" && \
     tree -apuD "/mtime" && \
     cargo build --release && \
+    echo "retimer output after build" && \
+    ./retimer.sh && \
+    cat file_info.txt && \
     cp /mtime/target/release/mtime-cache-test /artifacts/mtime-cache-test
 
 ENTRYPOINT [ "/artifacts/mtime-cache-test" ]
