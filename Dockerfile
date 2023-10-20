@@ -9,6 +9,8 @@ RUN mkdir /artifacts
 
 WORKDIR /mtime
 
+ARG CACHE_EPOCH
+
 COPY . .
 
 RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOME}/registry/index \
