@@ -21,7 +21,6 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     echo "current time" && \
     date && \
     echo "retimer output before build" && \
-    ./retimer.sh && \
     cat retimer-state/file_info.txt && \
     echo "${CARGO_HOME}/registry/index" && \
     tree -apuD "${CARGO_HOME}/registry/index" && \
