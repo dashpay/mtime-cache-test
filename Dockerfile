@@ -19,20 +19,22 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     --mount=type=cache,sharing=shared,id=target_${TARGETARCH},target=/mtime/target \
     --mount=type=cache,sharing=shared,id=retimer,target=/mtime/retimer-state \
     echo "current time" && \
-    date && \
+    date +%s && \
     echo "retimer output before build" && \
     cat retimer-state/file_info.txt && \
-    echo "${CARGO_HOME}/registry/index" && \
-    tree -apuD "${CARGO_HOME}/registry/index" && \
-    echo "${CARGO_HOME}/registry/cache" && \
-    tree -apuD "${CARGO_HOME}/registry/cache" && \
-    echo "${CARGO_HOME}/git/db" && \
-    tree -apuD "${CARGO_HOME}/git/db" && \
+    echo "Running retimer restore" && \
+    ./retimer.sh restore && \
+    # echo "${CARGO_HOME}/registry/index" && \
+    # tree -apuD "${CARGO_HOME}/registry/index" && \
+    # echo "${CARGO_HOME}/registry/cache" && \
+    # tree -apuD "${CARGO_HOME}/registry/cache" && \
+    # echo "${CARGO_HOME}/git/db" && \
+    # tree -apuD "${CARGO_HOME}/git/db" && \
     echo "/mtime" && \
     tree -apuD "/mtime" && \
     cargo build --release && \
-    echo "retimer output after build" && \
-    ./retimer.sh && \
+    echo "Running retimer save" && \
+    ./retimer.sh save && \
     cat retimer-state/file_info.txt && \
     cp /mtime/target/release/mtime-cache-test /artifacts/mtime-cache-test
 
