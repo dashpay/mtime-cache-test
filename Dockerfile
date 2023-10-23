@@ -24,12 +24,6 @@ RUN --mount=type=cache,sharing=shared,id=cargo_registry_index,target=${CARGO_HOM
     cat retimer-state/file_info.txt && \
     echo "Running retimer restore" && \
     ./retimer.sh restore && \
-    # echo "${CARGO_HOME}/registry/index" && \
-    # tree -apuD "${CARGO_HOME}/registry/index" && \
-    # echo "${CARGO_HOME}/registry/cache" && \
-    # tree -apuD "${CARGO_HOME}/registry/cache" && \
-    # echo "${CARGO_HOME}/git/db" && \
-    # tree -apuD "${CARGO_HOME}/git/db" && \
     echo "/mtime" && \
     tree -apuD "/mtime" && \
     cargo build --release && \

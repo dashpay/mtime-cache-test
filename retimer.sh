@@ -24,10 +24,7 @@ restore_timestamps() {
     hash=$(echo "$line" | awk '{print $3}')
     
     if [ "$(calculate_blake3 "$file")" = "$hash" ]; then
-      echo "calculated hash"
-      echo "$(calculate_blake3 "$file")"
-      echo "hash in file"
-      echo "$hash"
+      echo "Restoring mtime for $file"
       touch -d "@$mtime" "$file"
     else
       echo "Hash mismatch for $file"
