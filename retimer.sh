@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Output file
-OUTPUT_FILE="file_info.txt"
+OUTPUT_FILE="retimer-state/file_info.txt"
 
 # Function to calculate BLAKE3 hash
 calculate_blake3() {
@@ -17,7 +17,7 @@ get_file_info() {
 }
 
 # Iterate through files and write their info to the output file
-rm -f file_info.txt
+rm -f retimer-state/file_info.txt
 find src -type f | while read -r file; do
   get_file_info "$file" >> "$OUTPUT_FILE"
 done
