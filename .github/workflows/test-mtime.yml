@@ -39,5 +39,4 @@ jobs:
           docker run dashpay/mtime-test:0
 
       - name: Setup tmate session
-        if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
