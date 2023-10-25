@@ -18,8 +18,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Restore timestamps
-        uses: chetan/git-restore-mtime-action@v2
+      # - name: Restore timestamps
+      #   uses: chetan/git-restore-mtime-action@v2
 
       - name: Build Docker image
         uses: ./.github/actions/docker
@@ -37,3 +37,7 @@ jobs:
       - name: Run generated artifact
         run: |
           docker run dashpay/mtime-test:0
+
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
