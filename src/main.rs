@@ -1,3 +1,3 @@
 fn main() {
-    println!("master branch 1");
+    println!("master branch 2");
 }
